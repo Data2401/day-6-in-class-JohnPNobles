@@ -1,8 +1,11 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "John Nobles"
 date: "DATA 2401"
-output: html_document
+output: 
+  html_document: 
+    highlight: textmate
+    theme: simplex
 ---
 **Note: Your exam will be in a similar format to this (RMarkdown File with Questions and Code chunks for your answers), so make sure you have the process for knitting to html working.** 
 
@@ -15,32 +18,51 @@ The questions from your notes today are below, please copy your answers them her
 
 1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
 
-```{R}
-
-
+```{r}
+FtoC <- function(Ftemp) {
+  (Ftemp - 32) * 5 / 9
+}
+FtoC(128)
 ```
 
 2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
 
 
 ```{r}
-
-
+comboFunc <- function(Ftemp, Fdist) {
+  Ctemp = (Ftemp - 32) * 5 / 9
+  Mdist = Fdist / 3.28
+  return(c(Ctemp, Mdist))
+}
+comboFunc(32, 100)
 ```
 
 
 3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
 
 ```{R}
-
-
+whatsign <- function(number) {
+  if (number == 0) {
+    return(print("The sign is neither pos or neg as the number is 0.")) }
+  else if (number > 0) {
+    return(print("The sign is positive because the number is larger than 0.")) }
+  else {
+    return(print("The sign is negative because the number is smaller than 0.")) }
+}
+whatsign(-4)
 ```
 
 4. Write a function that returns the absolute value of the number passed as an argument.
    + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
    
 ```{r}
-
+absv <- function(number) {
+  if (number >= 0) { 
+    print(number) }
+  else { 
+    print(number * -1) }
+}
+absv(0)
 
 ```
 
@@ -48,8 +70,18 @@ The questions from your notes today are below, please copy your answers them her
    + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
    
 ```{r}
-
-
+absv <- function(number) {
+  if (is.numeric(number) == FALSE) {
+    print("WRONG, INCORRECT, FAILURE, FAILED, YOU WERE WRONG.") }
+  else if (number >= 0) { 
+    print(number) }
+  else { 
+    print(number * -1) }
+}
+absv(-4)
+absv(0)
+absv("FOOD?")
+absv(3)
 
 ```
    
@@ -60,5 +92,5 @@ The questions from your notes today are below, please copy your answers them her
 
 
 
-```
+
 
